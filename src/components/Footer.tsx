@@ -1,0 +1,60 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+
+interface SocialLink {
+  href: string;
+  icon: IconDefinition;
+  label: string;
+  className: string;
+}
+
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks: SocialLink[] = [
+    {
+      href: "https://twitter.com/its_tossi",
+      icon: faXTwitter,
+      label: "Twitter",
+      className: "bg-[#333]"
+    },
+    {
+      href: "https://www.instagram.com/tosif._.raza",
+      icon: faInstagram,
+      label: "Instagram",
+      className: "bg-[radial-gradient(circle_at_30%_107%,#fdf497_0,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285aeb_90%)]"
+    },
+    {
+      href: "https://www.linkedin.com/in/tosif-raza-247471205/",
+      icon: faLinkedin,
+      label: "LinkedIn",
+      className: "bg-[linear-gradient(138deg,_#2489be_33.45%,_#0575b3_66.59%)]"
+    }
+  ];
+
+  return (
+    <footer className="text-white p-4 w-full">
+      <div className="container mx-auto flex justify-between items-center">
+        <p>&copy; {currentYear} SolEarn. All rights reserved.</p>
+        <div className="flex space-x-4">
+          {socialLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className={`flex items-center justify-center w-10 h-10 ${link.className} rounded-full transition-transform duration-300 ease-in-out transform group hover:rotate-180`}
+            >
+              <FontAwesomeIcon width={20} height={20} icon={link.icon} className="text-white text-2xl" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
