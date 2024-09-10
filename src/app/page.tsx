@@ -1,12 +1,16 @@
 import dynamic from 'next/dynamic';
 const HomePage = dynamic(() => import('@/components/HomePage'));
-const SupportFrom = dynamic(() => import('@/components/SupportFrom'));
+const DownloadApp = dynamic(() => import('@/components/DownloadApp'));
+const Features = dynamic(() => import('@/components/Features'));
+const HowItWorks = dynamic(() => import('@/components/HowItWorks'));
 
 export default function Home() {
   return (
     <>
       <HomePage />
-      <SupportFrom />
+      <Features />
+      <HowItWorks />
+      <DownloadApp />
     </>
   );
 }

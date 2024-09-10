@@ -23,9 +23,11 @@
     "@teamhanko/hanko-elements": "^1.0.2",
     "framer-motion": "^11.5.4",
     "jose": "^5.8.0",
+    "lottie-react": "^2.4.0",
     "next": "14.2.8",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-fast-marquee": "^1.6.5"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -3,7 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Modal from './Modal';
+import dynamic from 'next/dynamic';
+
+const SupportFrom = dynamic(() => import('./SupportFrom'));
+const Modal = dynamic(() => import('./Modal'));
 
 const HomePage: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,6 +129,7 @@ const HomePage: React.FC = () => {
             </button>
           </motion.div>
         </div>
+        <SupportFrom />
       </div>
     </>
   );
