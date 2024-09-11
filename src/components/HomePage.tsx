@@ -23,7 +23,6 @@ const HomePage = () => {
     }
   }, [id]);
 
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
@@ -45,7 +44,7 @@ const HomePage = () => {
 
   const cryptoImageVariants = {
     hidden: { opacity: 0, scale: 0.5, rotate: -180 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       scale: 1,
       rotate: 0,

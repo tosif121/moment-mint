@@ -1,4 +1,3 @@
-'use client'
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -94,7 +93,7 @@ const HowItWorks: React.FC = () => {
                   >
                     <motion.div
                       className="bg-[#272731] w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      animate={{ rotate: rotateSpring }}
+                      style={{ rotate: rotateSpring }}
                     >
                       <FontAwesomeIcon
                         icon={step.icon}

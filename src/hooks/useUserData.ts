@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { Hanko } from "@teamhanko/hanko-elements";
+import { useState, useEffect } from 'react';
+import { Hanko } from '@teamhanko/hanko-elements';
 
-const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || "";
+const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || '';
 
 interface HankoUser {
   id: string;
@@ -11,28 +11,43 @@ interface HankoUser {
 }
 
 export function useUserData(): HankoUser {
-  const [hanko, setHanko] = useState<Hanko>();
+  const [hanko, setHanko] = useState<Hanko | null>(null);
   const [userState, setUserState] = useState<HankoUser>({
-    id: "",
-    email: "",
+    id: '',
+    email: '',
     loading: true,
     error: null,
   });
 
   useEffect(() => {
-    import("@teamhanko/hanko-elements").then(({ Hanko }) =>
-      setHanko(new Hanko(hankoApi))
-    );
+    import('@teamhanko/hanko-elements')
+      .then(({ Hanko }) => {
+        setHanko(new Hanko(hankoApi));
+      })
+      .catch((error) => {
+        setUserState({ id: '', email: '', loading: false, error: `Failed to load Hanko: ${error.message}` });
+      });
   }, []);
 
   useEffect(() => {
-    hanko?.user
+    if (!hanko) return;
+
+    hanko.user
       .getCurrent()
       .then(({ id, email }) => {
-        setUserState({ id, email, loading: false, error: null });
+        setUserState({
+          id,
+          email: email ?? '',
+          loading: false,
+          error: null,
+        });
       })
       .catch((error) => {
-        setUserState((prevState) => ({ ...prevState, loading: false, error }));
+        setUserState((prevState) => ({
+          ...prevState,
+          loading: false,
+          error: error.message,
+        }));
       });
   }, [hanko]);
 
