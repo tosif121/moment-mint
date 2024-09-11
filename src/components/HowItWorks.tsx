@@ -36,7 +36,7 @@ const HowItWorks: React.FC = () => {
 
   return (
     <div className="min-h-screen p-16 text-white flex flex-col justify-evenly">
-      <div className="mx-auto">
+      <div className="m-auto container">
         <h2 className="text-5xl font-bold text-center mb-16">How to Earn with SolEarn</h2>
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
@@ -44,9 +44,16 @@ const HowItWorks: React.FC = () => {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:scale-110 hover:bg-purple-800/20"
+                  className="bg-[#1b1b25] group backdop-blur-lg rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:scale-110 hover:bg-purple-500/20"
                 >
-                  <FontAwesomeIcon icon={step.icon} className="text-4xl text-purple-400 mb-6" />
+                  <div className="bg-[#272731] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                    <FontAwesomeIcon
+                      icon={step.icon}
+                      className="text-2xl shadow-sm text-[#8639ff] transition-colors duration-300 group-hover:text-white"
+                      width={35}
+                      height={35}
+                    />
+                  </div>
                   <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
                   <p className="text-gray-300">{step.description}</p>
                 </div>

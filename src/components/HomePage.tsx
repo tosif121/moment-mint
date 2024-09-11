@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
 
       <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" />
 
-      <div className="min-h-screen flex flex-col justify-evenly items-center">
+      <div className="min-h-[91vh] flex flex-col justify-evenly items-center">
         <div className="relative w-full max-w-4xl text-center">
           <motion.div variants={cryptoImageVariants} initial="hidden" animate="visible">
             <Image
@@ -129,7 +129,7 @@ const HomePage: React.FC = () => {
             </button>
           </motion.div>
         </div>
-        <SupportFrom />
+        {/* <SupportFrom /> */}
       </div>
     </>
   );

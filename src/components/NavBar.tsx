@@ -14,6 +14,14 @@ const NavBar: React.FC = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (toggleMenu) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, [toggleMenu]);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setToggleMenu(false);
