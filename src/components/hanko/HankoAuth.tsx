@@ -23,7 +23,7 @@ export default function HankoAuth() {
   }, [hankoApi]);
 
   const redirectAfterLogin = useCallback(() => {
-    router.replace("/dashboard");
+    router.replace("/");
   }, [router]);
 
   useEffect(() => {

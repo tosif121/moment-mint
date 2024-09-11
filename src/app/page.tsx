@@ -1,3 +1,5 @@
+import { useSessionData } from '@/hooks/useSessionData';
+import { useUserData } from '@/hooks/useUserData';
 import dynamic from 'next/dynamic';
 const HomePage = dynamic(() => import('@/components/HomePage'));
 const DownloadApp = dynamic(() => import('@/components/DownloadApp'));

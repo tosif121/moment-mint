@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
 import dynamic from 'next/dynamic';
 import { Manrope } from 'next/font/google';
 
+const AppWalletProvider = dynamic(() => import('@/components/AppWalletProvider'));
 const NavBar = dynamic(() => import('@/components/NavBar'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`antialiased bg-[#0d0d17] scroll-smooth ${poppins.className}`}>
         <div className="flex flex-col min-h-screen">
           <NavBar />
-          {children}
+          <AppWalletProvider>{children}</AppWalletProvider>
           <Footer />
         </div>
       </body>

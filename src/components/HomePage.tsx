@@ -6,10 +6,24 @@ import { motion, useScroll, useTransform, useAnimation, useMotionValue } from 'f
 import dynamic from 'next/dynamic';
 
 const Modal = dynamic(() => import('./Modal'));
+import { useUserData } from '@/hooks/useUserData';
+import WalletConnect from './WalletConnect';
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
+  const { id } = useUserData();
+  const [hasId, setHasId] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      setHasId(true);
+    } else {
+      setHasId(false);
+    }
+  }, [id]);
+
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
@@ -140,12 +154,14 @@ const HomePage = () => {
           </motion.div>
 
           <motion.div variants={buttonVariants} initial="hidden" animate="visible" whileHover="hover">
-            <button
-              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow inline-block transition duration-500"
-              onClick={() => setIsOpen(true)}
-            >
-              Login
-            </button>
+            {(hasId && <WalletConnect />) || (
+              <button
+                className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow inline-block transition duration-500"
+                onClick={() => setIsOpen(true)}
+              >
+                Login
+              </button>
+            )}
           </motion.div>
         </div>
       </div>
