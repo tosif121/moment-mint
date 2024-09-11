@@ -17,6 +17,9 @@
   background: #8b5cf6;
 }
 
+.perspective-1000 {
+  perspective: 1000px;
+}
 
 svg g[transform='matrix(1,0,0,0.10219000279903412,629,763)'] {
   opacity: 0;

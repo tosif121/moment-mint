@@ -1,7 +1,9 @@
+'use client'
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { motion, useAnimation } from 'framer-motion';
 
 interface SocialLink {
   href: string;
@@ -34,26 +36,62 @@ const Footer: React.FC = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const iconVariants = {
+    hover: { scale: 1.2, rotate: 360, transition: { duration: 0.3 } }
+  };
+
   return (
-    <footer className="text-white p-4 w-full">
-      <div className="container mx-auto flex justify-between items-center">
-        <p>&copy; {currentYear} SolEarn. All rights reserved.</p>
-        <div className="flex space-x-4">
+    <motion.footer 
+      className="text-white p-4 w-full"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+        <motion.p 
+          variants={itemVariants}
+          className="mb-4 sm:mb-0"
+        >
+          &copy; {currentYear} SolEarn. All rights reserved.
+        </motion.p>
+        <motion.div 
+          className="flex space-x-4"
+          variants={itemVariants}
+        >
           {socialLinks.map((link) => (
-            <a
+            <motion.a
               key={link.href}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className={`flex items-center justify-center w-10 h-10 ${link.className} rounded-full transition-transform duration-300 ease-in-out transform group hover:rotate-180`}
+              className={`flex items-center justify-center w-12 h-12 ${link.className} rounded-full transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl`}
+              whileHover="hover"
+              variants={iconVariants}
             >
-              <FontAwesomeIcon width={20} height={20} icon={link.icon} className="text-white text-2xl" />
-            </a>
+              <FontAwesomeIcon width={24} height={24} icon={link.icon} className="text-white text-2xl" />
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

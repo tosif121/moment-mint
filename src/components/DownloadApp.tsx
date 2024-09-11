@@ -1,39 +1,105 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import Lottie from 'lottie-react';
 import animationData from '../lottieAnimation/animation_4.json';
+import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'framer-motion';
 
 const DownloadApp: React.FC = () => {
+  const [hovered, setHovered] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 11]);
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+  const scaleSpring = useSpring(scaleProgress, springConfig);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        type: 'spring',
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0, rotate: -5 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      rotate: 0,
+      transition: { duration: 0.8, type: 'spring' },
+    },
+  };
+
+  const buttonVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.1, transition: { duration: 0.3, type: 'spring', stiffness: 300 } },
+  };
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [30, -30]);
+  const rotateY = useTransform(x, [-100, 100], [-30, 30]);
+
   return (
-    <div className="min-h-screen p-16 text-white flex justify-center items-center bg-black">
-      <div className="m-auto container flex flex-col lg:flex-row items-center justify-between">
-        <div className="lg:w-1/2 flex justify-center items-center relative">
+    <div className="min-h-screen p-16 text-white flex justify-center items-center bg-black overflow-hidden">
+      <motion.div
+        className="m-auto container flex flex-col lg:flex-row items-center justify-between"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        style={{ scale: scaleSpring, opacity: opacityProgress }}
+      >
+        <motion.div
+          className="lg:w-1/2 flex justify-center items-center relative perspective-1000"
+          variants={itemVariants}
+          style={{ rotateX, rotateY, z: 100 }}
+        >
           <div className="relative w-full max-w-md lg:max-w-lg me-auto">
             <Lottie animationData={animationData} loop={true} style={{ height: '100%', width: '100%' }} />
           </div>
-        </div>
-
+        </motion.div>
         <div className="lg:w-1/2 flex flex-col items-start lg:items-start text-center lg:text-left">
-          <h2 className="text-5xl font-bold mb-6 lg:mb-8">Download the SolEarn App</h2>
-          <p className="text-lg text-gray-300 mb-10 lg:mb-12">
+          <motion.h2 className="text-5xl font-bold mb-6 lg:mb-8" variants={itemVariants}>
+            Download the SolEarn App
+          </motion.h2>
+          <motion.p className="text-lg text-gray-300 mb-10 lg:mb-12" variants={itemVariants}>
             Experience the ultimate way to earn with Solana and USDC! Download the app to get started on your journey.
-          </p>
-
-          <div className="flex flex-col md:flex-row justify-center lg:justify-start gap-6">
-            <a
+          </motion.p>
+          <motion.div
+            className="flex flex-col md:flex-row justify-center lg:justify-start gap-6"
+            variants={itemVariants}
+          >
+            <motion.a
               href="#"
-              className="group w-full relative sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow hover:from-violet-600 hover:to-blue-600 inline-block transition duration-500 overflow-hidden hover:scale-110"
+              className="group w-full relative sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow overflow-hidden"
+              variants={buttonVariants}
+              initial="rest"
+              whileHover="hover"
+              onHoverStart={() => setHovered(true)}
+              onHoverEnd={() => setHovered(false)}
             >
-              <span className="relative z-10 flex items-center justify-center ">
+              <motion.span
+                className="absolute inset-0 bg-white"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: hovered ? 1.5 : 0, opacity: hovered ? 0.3 : 0 }}
+                transition={{ duration: 0.5 }}
+              />
+              <span className="relative z-10 flex items-center justify-center">
                 <FontAwesomeIcon icon={faGooglePlay} className="mr-3 text-2xl" />
                 Download App
               </span>
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
