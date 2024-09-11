@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
-import { register, Hanko } from "@teamhanko/hanko-elements";
+import { useEffect, useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { register, Hanko } from '@teamhanko/hanko-elements';
 
 const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || '';
 
@@ -12,18 +12,19 @@ export default function HankoAuth() {
 
   useEffect(() => {
     if (hankoApi) {
-      import("@teamhanko/hanko-elements").then(({ Hanko }) => {
-        const hankoInstance = new Hanko(hankoApi);
-        console.log(hankoInstance); // Log to check available methods
-        setHanko(hankoInstance);
-      }).catch((error) => {
-        console.error("Failed to load Hanko elements:", error);
-      });
+      import('@teamhanko/hanko-elements')
+        .then(({ Hanko }) => {
+          const hankoInstance = new Hanko(hankoApi);
+          setHanko(hankoInstance);
+        })
+        .catch((error) => {
+          console.error('Failed to load Hanko elements:', error);
+        });
     }
   }, [hankoApi]);
 
   const redirectAfterLogin = useCallback(() => {
-    router.replace("/");
+    router.replace('/');
   }, [router]);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function HankoAuth() {
   useEffect(() => {
     if (hankoApi) {
       register(hankoApi).catch((error) => {
-        console.error("Hanko registration failed:", error);
+        console.error('Hanko registration failed:', error);
       });
     }
   }, [hankoApi]);
