@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -38,11 +39,9 @@ const HowItWorks: React.FC = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.1, 0.9]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const scaleSpring = useSpring(scale, springConfig);
-  const rotateSpring = useSpring(rotate, springConfig);
 
   const titleRef = React.useRef(null);
   const titleInView = useInView(titleRef, { once: false, amount: 0.5 });
@@ -91,17 +90,14 @@ const HowItWorks: React.FC = () => {
                     }}
                     className="bg-[#1b1b25] group backdrop-blur-lg rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:bg-purple-500/20"
                   >
-                    <motion.div
-                      className="bg-[#272731] w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ rotate: rotateSpring }}
-                    >
+                    <div className="bg-[#272731] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                       <FontAwesomeIcon
                         icon={step.icon}
                         className="text-2xl shadow-sm text-[#8639ff] transition-colors duration-300 group-hover:text-white"
                         width={35}
                         height={35}
                       />
-                    </motion.div>
+                    </div>
                     <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
                     <p className="text-gray-300">{step.description}</p>
                   </motion.div>
