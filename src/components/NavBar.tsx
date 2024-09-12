@@ -244,7 +244,7 @@ const NavBar: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={social.label}
-                          className="flex items-center justify-center w-10 h-10 hover:bg-[#333] rounded-full transition-all"
+                          className="flex items-center justify-center w-10 h-10 hover:bg-[#1a1a1a] rounded-full transition-all"
                           variants={socialIconVariants}
                           initial="hidden"
                           animate="visible"

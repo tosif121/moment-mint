@@ -10,7 +10,7 @@ const DownloadApp: React.FC = () => {
   const [hovered, setHovered] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0.9]);
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const scaleSpring = useSpring(scaleProgress, springConfig);
 
@@ -55,7 +55,6 @@ const DownloadApp: React.FC = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        style={{ scale: scaleSpring, opacity: opacityProgress }}
       >
         <motion.div
           className="lg:w-1/2 flex justify-center items-center relative perspective-1000"

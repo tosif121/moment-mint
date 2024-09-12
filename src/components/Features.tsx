@@ -1,10 +1,10 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faHeart, faBook, faCertificate } from '@fortawesome/free-solid-svg-icons';
 import Lottie from 'lottie-react';
 import animationData from '../lottieAnimation/animation_1.json';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimation } from 'framer-motion';
+import { motion, useInView, useScroll, useSpring, useTransform } from 'framer-motion';
 
 const Features = () => {
   const features = [
@@ -22,26 +22,9 @@ const Features = () => {
     },
   ];
 
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const scaleSpring = useSpring(scale, springConfig);
-
   return (
-    <motion.div
-      ref={containerRef}
-      style={{ opacity, scale: scaleSpring }}
-      className="min-h-screen p-16 bg-gradient-to-b from-[#131128] to-[#1D1B3F] text-white flex flex-col justify-evenly overflow-hidden"
-    >
-      <motion.h3 className="text-5xl font-bold text-center mb-12 relative">
-        <span className="relative z-10">Earn, Learn, and Certify Your Success</span>
-      </motion.h3>
+    <div className="min-h-screen p-16 bg-gradient-to-b from-[#131128] to-[#1D1B3F] text-white flex flex-col justify-evenly overflow-hidden">
+      <h3 className="text-5xl font-bold text-center ">Earn, Learn, and Certify Your Success</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 m-auto container relative">
         {features.map((feature, index) => (
           <motion.div
@@ -49,7 +32,7 @@ const Features = () => {
             initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0, rotateY: 90 }}
             whileInView={{ x: 0, opacity: 1, rotateY: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.1, type: 'spring' }}
+            transition={{ duration: 0.8, delay: index * 0.5, type: 'spring' }}
             whileHover={{ scale: 1.05, rotateY: 10 }}
             className={`bg-[#1D1B3F] shadow-xl p-6 rounded-2xl ${
               index === 1 ? 'md:col-start-3' : ''
@@ -73,7 +56,7 @@ const Features = () => {
           <Lottie animationData={animationData} loop={true} style={{ height: '100%', width: '100%' }} />
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

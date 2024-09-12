@@ -11,7 +11,6 @@ import WalletConnect from './WalletConnect';
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef(null);
   const { id } = useUserData();
   const [hasId, setHasId] = useState(false);
 
@@ -23,21 +22,20 @@ const HomePage = () => {
     }
   }, [id]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-
   const titleControls = useAnimation();
   const titleY = useMotionValue(0);
 
   useEffect(() => {
     const titleAnimation = async () => {
-      await titleControls.start({ y: [-50, 0], opacity: [0, 1], transition: { duration: 0.7 } });
-      titleControls.start({ y: [0, -10, 0], transition: { repeat: Infinity, duration: 2, ease: 'easeInOut' } });
+      await titleControls.start({
+        y: ['-140px', '0px'],
+        opacity: [0, 1],
+        transition: { duration: 2 },
+      });
+      titleControls.start({
+        y: ['0px', '-10px', '0px'],
+        transition: { repeat: Infinity, duration: 2, ease: 'easeInOut' },
+      });
     };
     titleAnimation();
   }, [titleControls]);
@@ -63,15 +61,15 @@ const HomePage = () => {
   };
 
   const subtitleVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         type: 'spring',
         stiffness: 100,
         damping: 10,
-        delay: 0.7,
+        delay: 1,
       },
     },
   };
@@ -83,9 +81,8 @@ const HomePage = () => {
   };
 
   return (
-    <motion.div ref={containerRef} style={{ opacity, scale }} className="min-h-screen">
+    <>
       <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" />
-
       <div className="min-h-[91vh] flex flex-col justify-evenly items-center">
         <div className="relative w-full max-w-4xl text-center">
           {[1, 2, 3, 4].map((i) => (
@@ -166,7 +163,7 @@ const HomePage = () => {
       </div>
 
       {isOpen && <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />}
-    </motion.div>
+    </>
   );
 };
 

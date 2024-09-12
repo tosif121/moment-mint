@@ -35,30 +35,10 @@ const HowItWorks: React.FC = () => {
     },
   ];
 
-  const { scrollYProgress } = useScroll();
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.1, 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const scaleSpring = useSpring(scale, springConfig);
-
-  const titleRef = React.useRef(null);
-  const titleInView = useInView(titleRef, { once: false, amount: 0.5 });
-
   return (
     <div className="min-h-screen p-16 text-white flex flex-col justify-evenly relative overflow-hidden">
-      <motion.div style={{ y: yParallax }} className="absolute top-0 left-0 w-full h-full -z-10" />
       <div className="m-auto container">
-        <motion.h2
-          ref={titleRef}
-          style={{ opacity, scale: scaleSpring }}
-          animate={titleInView ? { y: 0, rotateX: 0 } : { y: 100, rotateX: 90 }}
-          transition={{ duration: 0.8, type: 'spring' }}
-          className="text-5xl font-bold text-center mb-16 perspective-1000"
-        >
-          How to Earn with SolEarn
-        </motion.h2>
+        <h2 className="text-5xl font-bold text-center mb-16 perspective-1000">How to Earn with SolEarn</h2>
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
