@@ -1,18 +1,13 @@
 'use client';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
+import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import Lottie from 'lottie-react';
-import animationData from '../lottieAnimation/animation_4.json';
-import { motion, useMotionValue, useTransform, useSpring, useScroll } from 'framer-motion';
+import animationData from '../lottieAnimation/animation_3.json';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 const DownloadApp: React.FC = () => {
   const [hovered, setHovered] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0.9]);
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const scaleSpring = useSpring(scaleProgress, springConfig);
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },

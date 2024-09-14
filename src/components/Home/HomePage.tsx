@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform, useAnimation, useMotionValue } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-const Modal = dynamic(() => import('./Modal'));
+const Modal = dynamic(() => import('../Modal'));
 import { useUserData } from '@/hooks/useUserData';
-import WalletConnect from './WalletConnect';
+import WalletConnect from '../WalletConnect';
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,10 +82,10 @@ const HomePage = () => {
 
   return (
     <>
-      <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" />
-      <div className="min-h-[91vh] flex flex-col justify-evenly items-center">
+      {/* <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" /> */}
+      <div className="md:min-h-[91vh] min-h-[50vh] flex flex-col justify-center items-center">
         <div className="relative w-full max-w-4xl text-center">
-          {[1, 2, 3, 4].map((i) => (
+          {/* {[1, 2, 3, 4].map((i) => (
             <motion.div
               key={i}
               custom={i}
@@ -93,7 +93,7 @@ const HomePage = () => {
               initial="hidden"
               animate="visible"
               whileHover="hover"
-              className={`absolute ${
+              className={`absolute sm:block hidden ${
                 i === 1
                   ? 'top-0 left-0 sm:-top-12 sm:-left-12 md:-top-24 md:-left-24'
                   : i === 2
@@ -111,12 +111,12 @@ const HomePage = () => {
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
               />
             </motion.div>
-          ))}
+          ))} */}
 
           <motion.h1
             animate={titleControls}
             style={{ y: titleY }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 md:block"
           >
             Unlock the Power of Solana
           </motion.h1>
@@ -125,7 +125,7 @@ const HomePage = () => {
             variants={subtitleVariants}
             initial="hidden"
             animate="visible"
-            className="text-xl sm:text-2xl md:text-3xl text-white mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-center"
+            className="text-lg sm:text-2xl md:text-3xl text-white mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-center"
           >
             <Image
               src="/images/solana-icon.png"
@@ -138,7 +138,7 @@ const HomePage = () => {
           </motion.h2>
         </div>
 
-        <div className="w-full max-w-4xl flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="w-full max-w-4xl flex justify-center items-center space-x-4">
           <motion.div variants={buttonVariants} initial="hidden" animate="visible" whileHover="hover">
             <Link
               href="/tasks"

@@ -131,41 +131,9 @@ const NavBar: React.FC = () => {
   return (
     <motion.div initial="hidden" animate="visible" className="sticky top-0 z-10" variants={navAnimation}>
       <div className="absolute -top-[200px] left-[50%] -z-10 h-[200px] w-[640px] translate-x-[-50%] opacity-50 mix-blend-plus-lighter">
-        <motion.div
-          className="h-[51.034px] w-[352px] flex-shrink-0 rounded-[352px] bg-violet-500 blur-[110px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0.8, 0.5],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="h-[126.207px] w-[239.059px] flex-shrink-0 bg-white blur-[222.5px]"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="h-[200px] w-[640px] flex-shrink-0 rounded-[640px] bg-gradient-to-b from-blue-500 to-violet-500 mix-blend-plus-lighter blur-[222.5px]"
-          animate={{
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        />
+        <div className="h-[51.034px] w-[352px] flex-shrink-0 rounded-[352px] bg-violet-500 blur-[110px]"></div>
+        <div className="h-[126.207px] w-[239.059px] flex-shrink-0 bg-white blur-[222.5px]"></div>
+        <div className="h-[200px] w-[640px] flex-shrink-0 rounded-[640px] bg-gradient-to-b from-blue-500 to-violet-500 mix-blend-plus-lighter blur-[222.5px]"></div>
       </div>
 
       <nav className="relative p-4">
@@ -218,10 +186,10 @@ const NavBar: React.FC = () => {
                     <FontAwesomeIcon width={25} height={25} icon={faTimes} className="text-white text-5xl" />
                   </motion.button>
                 </motion.div>
-                <div className="flex justify-between mb-6">
-                  <motion.div className="flex flex-col justify-center space-y-4" variants={linkVariants}>
+                <div className="flex flex-col-reverse md:flex-row justify-between  mb-6">
+                  <motion.div className="flex flex-col justify-center space-y-4 mt-6 md:mt-0" variants={linkVariants}>
                     <motion.span
-                      className="text-white text-xl"
+                      className="text-white text-xl md:text-2xl"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
@@ -266,7 +234,7 @@ const NavBar: React.FC = () => {
                       <motion.div key={link.href} variants={linkVariants} custom={index}>
                         <Link
                           href={link.href}
-                          className={`text-5xl font-bold hover:text-white block ${
+                          className={`text-3xl md:text-5xl font-bold hover:text-white block ${
                             pathname === link.href ? 'text-white' : 'text-white/60'
                           }`}
                         >
