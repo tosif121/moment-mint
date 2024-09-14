@@ -82,10 +82,10 @@ const HomePage = () => {
 
   return (
     <>
-      {/* <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" /> */}
+      <Image src="/images/bg_home.svg" layout="fill" objectFit="cover" className="z-[-1]" alt="Background" />
       <div className="md:min-h-[91vh] min-h-[50vh] flex flex-col justify-center items-center">
         <div className="relative w-full max-w-4xl text-center">
-          {/* {[1, 2, 3, 4].map((i) => (
+          {[1, 2, 3, 4].map((i) => (
             <motion.div
               key={i}
               custom={i}
@@ -111,7 +111,7 @@ const HomePage = () => {
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
               />
             </motion.div>
-          ))} */}
+          ))}
 
           <motion.h1
             animate={titleControls}
