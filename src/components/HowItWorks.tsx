@@ -3,42 +3,55 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUserPlus,
-  faSearch,
-  faTasks,
-  faMoneyBillWave,
-  faCertificate,
+  faCameraRetro,
+  faUpload,
+  faCoins,
+  faDiamond,
   faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
+
 import Lottie from 'lottie-react';
 import animationData from '../lottieAnimation/animation_2.json';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useInView } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 
 const HowItWorks: React.FC = () => {
   const steps = [
-    { icon: faUserPlus, title: 'Sign Up', description: 'Create your profile based on your skills and interests.' },
-    { icon: faSearch, title: 'Explore Tasks', description: 'Find real tasks like surveys, testing, and research.' },
-    { icon: faTasks, title: 'Complete the Task', description: 'Follow the instructions and submit your work.' },
     {
-      icon: faMoneyBillWave,
-      title: 'Get Paid Instantly',
-      description: 'Payment in Solana or USDC is released via smart contract.',
+      icon: faUserPlus,
+      title: 'Sign Up',
+      description: 'Create your profile and connect your crypto wallet.',
     },
     {
-      icon: faCertificate,
-      title: 'Earn an NFT Certificate',
-      description: 'Each task completed earns you a blockchain-based certificate.',
+      icon: faCameraRetro,
+      title: 'Capture Moments',
+      description: 'Use the app to capture real-time experiences as they happen.',
+    },
+    {
+      icon: faUpload,
+      title: 'Share Instantly',
+      description: 'Upload and share your authentic moments with the community.',
+    },
+    {
+      icon: faCoins,
+      title: 'Earn Crypto',
+      description: 'Receive cryptocurrency rewards for your shared moments.',
+    },
+    {
+      icon: faDiamond,
+      title: 'Create NFTs',
+      description: 'Turn special moments into unique digital collectibles.',
     },
     {
       icon: faChartLine,
-      title: 'Build Your Reputation',
-      description: 'Get rated and unlock higher-paying opportunities.',
+      title: 'Build Your Influence',
+      description: 'Grow your following and unlock more earning potential.',
     },
   ];
 
   return (
     <div className="min-h-screen p-16 text-white flex flex-col justify-evenly relative overflow-hidden">
       <div className="m-auto container">
-        <h2 className="text-5xl font-bold text-center mb-16 perspective-1000">How to Earn with SolEarn</h2>
+        <h2 className="text-5xl font-bold text-center mb-16 perspective-1000">Turn life into digital gold</h2>
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

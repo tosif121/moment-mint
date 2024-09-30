@@ -1,5 +1,5 @@
 {
-  "name": "sol-earn",
+  "name": "moment-mint",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,22 +13,11 @@
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@metaplex-foundation/js": "^0.20.1",
-    "@metaplex/js": "^4.12.0",
-    "@solana/wallet-adapter-base": "^0.9.23",
-    "@solana/wallet-adapter-react": "^0.15.35",
-    "@solana/wallet-adapter-react-ui": "^0.9.35",
-    "@solana/wallet-adapter-wallets": "^0.19.32",
-    "@solana/web3.js": "^1.95.3",
-    "@teamhanko/hanko-elements": "^1.0.2",
     "framer-motion": "^11.5.4",
-    "jose": "^5.8.0",
     "lottie-react": "^2.4.0",
     "next": "14.2.8",
-    "pino-pretty": "^11.2.2",
     "react": "^18",
-    "react-dom": "^18",
-    "react-fast-marquee": "^1.6.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",

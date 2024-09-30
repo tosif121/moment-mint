@@ -1,30 +1,38 @@
 'use client';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign, faHeart, faBook, faCertificate } from '@fortawesome/free-solid-svg-icons';
 import Lottie from 'lottie-react';
 import animationData from '../lottieAnimation/animation_1.json';
 import { motion } from 'framer-motion';
+import { faCameraRetro, faCoins, faDiamond, faLock } from '@fortawesome/free-solid-svg-icons';
 
 const Features = () => {
   const features = [
-    { icon: faDollarSign, title: 'First Income', description: 'Start earning money by working with real companies.' },
     {
-      icon: faHeart,
-      title: 'Passion',
-      description: 'Turn your passion into a profession and do what you love every day.',
+      icon: faCameraRetro,
+      title: 'Real-Time Sharing',
+      description: 'Capture and share authentic moments as they happen.',
     },
-    { icon: faBook, title: 'Learning', description: 'Experience hands-on learning by working on real projects.' },
     {
-      icon: faCertificate,
-      title: 'Certification',
-      description: 'Enhance your profile with experience certificates and showcase your skills.',
+      icon: faCoins,
+      title: 'Earn Crypto',
+      description: 'Get rewarded with cryptocurrency for sharing your experiences.',
+    },
+    {
+      icon: faLock,
+      title: 'Blockchain Verified',
+      description: 'Ensure the authenticity of your shared moments with blockchain technology.',
+    },
+    {
+      icon: faDiamond,
+      title: 'Create NFTs',
+      description: 'Turn your special moments into unique digital collectibles.',
     },
   ];
 
   return (
     <div className="min-h-screen p-8 md:p-16 bg-gradient-to-b from-[#131128] to-[#1D1B3F] text-white flex flex-col justify-evenly overflow-hidden">
-      <h3 className="text-3xl md:text-5xl font-bold text-center mb-6 md:mb-0">Earn, Learn, and Certify Your Success</h3>
+      <h3 className="text-3xl md:text-5xl font-bold text-center mb-6 md:mb-0 capitalize">Your life's highlights, now with rewards</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 m-auto max-w-screen-lg relative">
         {features.map((feature, index) => (
           <motion.div

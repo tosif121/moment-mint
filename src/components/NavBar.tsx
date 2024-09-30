@@ -140,7 +140,7 @@ const NavBar: React.FC = () => {
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-3">
             <motion.div variants={logoAnimation}>
-              <Image src="/images/logo.png" width={40} height={40} alt="SolEarn Logo" />
+              <Image src="/images/logo.png" width={60} height={60} alt="MomentMint Logo" />
             </motion.div>
             <motion.span
               className="text-white text-2xl font-bold"
@@ -148,7 +148,7 @@ const NavBar: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              SolEarn
+              MomentMint
             </motion.span>
           </Link>
           <motion.button
@@ -174,8 +174,8 @@ const NavBar: React.FC = () => {
               <div className="container mx-auto">
                 <motion.div className="flex justify-between items-center mb-6" variants={linkVariants}>
                   <button onClick={() => setToggleMenu(!toggleMenu)} className="flex items-center space-x-3">
-                    <Image src="/images/logo.png" width={40} height={40} alt="SolEarn Logo" />
-                    <span className="text-white text-2xl font-bold">SolEarn</span>
+                    <Image src="/images/logo.png" width={40} height={40} alt="MomentMint Logo" />
+                    <span className="text-white text-2xl font-bold">MomentMint</span>
                   </button>
                   <motion.button
                     onClick={() => setToggleMenu(!toggleMenu)}
@@ -194,7 +194,7 @@ const NavBar: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                      Reach out to us at: help@sol.earn
+                      Reach out to us at: help@moment.mint
                     </motion.span>
                     <div className="flex space-x-4">
                       {[
@@ -227,13 +227,14 @@ const NavBar: React.FC = () => {
                   <div className="flex flex-col items-end space-y-4">
                     {[
                       { href: '/', text: 'Home' },
-                      { href: '/tasks', text: 'Tasks' },
-                      { href: '/rewards', text: 'Rewards' },
-                      { href: '/profile', text: 'Profile' },
+                      { href: '/about-us', text: 'About us' },
+                      { href: '/terms-and-conditions', text: 'Terms of use' },
+                      { href: '/privacy-policy', text: 'Privacy Policy' },
                     ].map((link, index) => (
                       <motion.div key={link.href} variants={linkVariants} custom={index}>
                         <Link
                           href={link.href}
+                          onClick={() => setToggleMenu(false)}
                           className={`text-3xl md:text-5xl font-bold hover:text-white block ${
                             pathname === link.href ? 'text-white' : 'text-white/60'
                           }`}

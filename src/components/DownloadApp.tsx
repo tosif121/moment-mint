@@ -43,7 +43,10 @@ const DownloadApp: React.FC = () => {
   const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
   return (
-    <div className="min-h-screen p-16 text-white flex justify-center items-center bg-black overflow-hidden">
+    <div
+      className="min-h-screen p-16 text-white flex justify-center items-center bg-black overflow-hidden"
+      id="downloadApp"
+    >
       <motion.div
         className="m-auto container flex flex-col lg:flex-row items-center justify-between"
         variants={containerVariants}
@@ -62,10 +65,11 @@ const DownloadApp: React.FC = () => {
         </motion.div>
         <div className="lg:w-1/2 flex flex-col items-start lg:items-start text-center lg:text-left">
           <motion.h2 className="text-5xl font-bold mb-6 lg:mb-8" variants={itemVariants}>
-            Download the SolEarn App
+            Download the MomentMint App
           </motion.h2>
           <motion.p className="text-lg text-gray-300 mb-10 lg:mb-12" variants={itemVariants}>
-            Experience the ultimate way to earn with Solana and USDC! Download the app to get started on your journey.
+            Share real-time moments, earn crypto instantly. Blockchain verifies authenticity. Turn special experiences
+            into NFTs. Live, share, and profit from your authentic life
           </motion.p>
           <motion.div
             className="flex flex-col md:flex-row justify-center lg:justify-start gap-6"

@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="text-white p-4 w-full">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-        <p className="mb-4 sm:mb-0">&copy; {currentYear} SolEarn. All rights reserved.</p>
+        <p className="mb-4 sm:mb-0">&copy; {currentYear} MomentMint. All rights reserved.</p>
         <div className="flex space-x-4">
           {socialLinks.map((link) => (
             <a

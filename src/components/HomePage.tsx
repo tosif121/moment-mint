@@ -1,27 +1,10 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useAnimation, useMotionValue } from 'framer-motion';
-import dynamic from 'next/dynamic';
-
-const Modal = dynamic(() => import('../Modal'));
-import { useUserData } from '@/hooks/useUserData';
-import WalletConnect from '../WalletConnect';
+import { motion, useAnimation, useMotionValue } from 'framer-motion';
 
 const HomePage = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { id } = useUserData();
-  const [hasId, setHasId] = useState(false);
-
-  useEffect(() => {
-    if (id) {
-      setHasId(true);
-    } else {
-      setHasId(false);
-    }
-  }, [id]);
-
   const titleControls = useAnimation();
   const titleY = useMotionValue(0);
 
@@ -116,9 +99,9 @@ const HomePage = () => {
           <motion.h1
             animate={titleControls}
             style={{ y: titleY }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 md:block"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 md:block"
           >
-            Unlock the Power of Solana
+            Turn Special Moments into NFTs
           </motion.h1>
 
           <motion.h2
@@ -134,35 +117,22 @@ const HomePage = () => {
               alt="solana icon"
               className="mb-2 sm:mb-0 sm:mr-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
             />
-            Earn Sol Crypto by Completing Simple Tasks
+            Your Memories, Your Assets
           </motion.h2>
         </div>
 
         <div className="w-full max-w-4xl flex justify-center items-center space-x-4">
           <motion.div variants={buttonVariants} initial="hidden" animate="visible" whileHover="hover">
             <Link
-              href="/tasks"
+              href="#downloadApp"
               className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow inline-block transition duration-500"
               role="button"
             >
               Get Started
             </Link>
           </motion.div>
-
-          <motion.div variants={buttonVariants} initial="hidden" animate="visible" whileHover="hover">
-            {(hasId && <WalletConnect />) || (
-              <button
-                className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow inline-block transition duration-500"
-                onClick={() => setIsOpen(true)}
-              >
-                Login
-              </button>
-            )}
-          </motion.div>
         </div>
       </div>
-
-      {isOpen && <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />}
     </>
   );
 };

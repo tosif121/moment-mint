@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-const HomePage = dynamic(() => import('@/components/Home/HomePage'));
+const HomePage = dynamic(() => import('@/components/HomePage'));
 const DownloadApp = dynamic(() => import('@/components/DownloadApp'));
 const Features = dynamic(() => import('@/components/Features'));
 const HowItWorks = dynamic(() => import('@/components/HowItWorks'));
