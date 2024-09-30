@@ -49,9 +49,9 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen p-16 text-white flex flex-col justify-evenly relative overflow-hidden">
+    <div className="min-h-screen p-8 text-white flex flex-col justify-evenly relative overflow-hidden">
       <div className="m-auto container">
-        <h2 className="text-5xl font-bold text-center mb-16 perspective-1000">Turn life into digital gold</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 perspective-1000">Turn life into digital gold</h2>
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

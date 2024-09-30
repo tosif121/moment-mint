@@ -44,7 +44,7 @@ const DownloadApp: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen p-16 text-white flex justify-center items-center bg-black overflow-hidden"
+      className="min-h-screen p-8 text-white flex justify-center items-center bg-black overflow-hidden"
       id="downloadApp"
     >
       <motion.div
@@ -63,16 +63,23 @@ const DownloadApp: React.FC = () => {
             <Lottie animationData={animationData} loop={true} style={{ height: '100%', width: '100%' }} />
           </div>
         </motion.div>
-        <div className="lg:w-1/2 flex flex-col items-start lg:items-start text-center lg:text-left">
-          <motion.h2 className="text-5xl font-bold mb-6 lg:mb-8" variants={itemVariants}>
+        <div className="lg:w-1/2 flex flex-col items-start lg:items-start text-center lg:text-left md:mt-0 mt-16">
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8"
+            variants={itemVariants}
+          >
             Download the MomentMint App
           </motion.h2>
-          <motion.p className="text-lg text-gray-300 mb-10 lg:mb-12" variants={itemVariants}>
-            Share real-time moments, earn crypto instantly. Blockchain verifies authenticity. Turn special experiences
-            into NFTs. Live, share, and profit from your authentic life
+          <motion.p
+            className="text-[12px] sm:text-sm md:text-md lg:text-lg text-gray-300 mb-10 lg:mb-12"
+            variants={itemVariants}
+          >
+            Share real-time moments, earn crypto instantly. Blockchain verifies authenticity.
+            <br />
+            Turn special experiences into NFTs. Live, share, and profit from your authentic life.
           </motion.p>
           <motion.div
-            className="flex flex-col md:flex-row justify-center lg:justify-start gap-6"
+            className="flex flex-col md:flex-row justify-center lg:justify-start gap-6 m-auto md:m-0"
             variants={itemVariants}
           >
             <motion.a
@@ -90,7 +97,7 @@ const DownloadApp: React.FC = () => {
                 animate={{ scale: hovered ? 1.5 : 0, opacity: hovered ? 0.3 : 0 }}
                 transition={{ duration: 0.5 }}
               />
-              <span className="relative z-10 flex items-center justify-center">
+              <span className="relative z-10 flex items-center justify-center m-auto">
                 <FontAwesomeIcon icon={faGooglePlay} className="mr-3 text-2xl" />
                 Download App
               </span>

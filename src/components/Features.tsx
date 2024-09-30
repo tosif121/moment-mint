@@ -32,7 +32,7 @@ const Features = () => {
 
   return (
     <div className="min-h-screen p-8 md:p-16 bg-gradient-to-b from-[#131128] to-[#1D1B3F] text-white flex flex-col justify-evenly overflow-hidden">
-      <h3 className="text-3xl md:text-5xl font-bold text-center mb-6 md:mb-0 capitalize">Your life's highlights, now with rewards</h3>
+      <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 md:mb-0 capitalize">Your life's highlights, now with rewards</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 m-auto max-w-screen-lg relative">
         {features.map((feature, index) => (
           <motion.div

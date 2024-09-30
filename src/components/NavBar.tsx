@@ -130,12 +130,11 @@ const NavBar: React.FC = () => {
 
   return (
     <motion.div initial="hidden" animate="visible" className="sticky top-0 z-10" variants={navAnimation}>
-      <div className="absolute -top-[200px] left-[50%] -z-10 h-[200px] w-[640px] translate-x-[-50%] opacity-50 mix-blend-plus-lighter">
-        <div className="h-[51.034px] w-[352px] flex-shrink-0 rounded-[352px] bg-violet-500 blur-[110px]"></div>
-        <div className="h-[126.207px] w-[239.059px] flex-shrink-0 bg-white blur-[222.5px]"></div>
-        <div className="h-[200px] w-[640px] flex-shrink-0 rounded-[640px] bg-gradient-to-b from-blue-500 to-violet-500 mix-blend-plus-lighter blur-[222.5px]"></div>
+      <div className="absolute -top-32 sm:-top-48 left-1/2 -z-10 h-32 sm:h-48 w-full max-w-xs sm:max-w-xl -translate-x-1/2 opacity-50 mix-blend-plus-lighter">
+        <div className="h-8 sm:h-12 w-56 sm:w-80 mx-auto rounded-full bg-violet-500 blur-[6.875rem]"></div>
+        <div className="h-20 sm:h-28 w-48 sm:w-56 mx-auto bg-white blur-[13.90625rem]"></div>
+        <div className="h-32 sm:h-48 w-full rounded-[40rem] bg-gradient-to-b from-blue-500 to-violet-500 mix-blend-plus-lighter blur-[13.90625rem]"></div>
       </div>
-
       <nav className="relative p-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-3">
