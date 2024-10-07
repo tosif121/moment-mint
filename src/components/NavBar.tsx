@@ -193,16 +193,15 @@ const NavBar: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                      Reach out to us at: help@moment.mint
+                      Reach out to us at
                     </motion.span>
                     <div className="flex space-x-4">
                       {[
-                        { href: 'https://twitter.com/its_tossi', icon: faXTwitter, label: 'Twitter' },
-                        { href: 'https://www.instagram.com/tosif._.raza', icon: faInstagram, label: 'Instagram' },
+                        { href: 'https://twitter.com/moment_mint_app', icon: faXTwitter, label: 'Twitter' },
                         {
-                          href: 'https://www.linkedin.com/in/tosif-raza-247471205/',
-                          icon: faLinkedin,
-                          label: 'LinkedIn',
+                          href: 'https://www.instagram.com/moment_mint_app',
+                          icon: faInstagram,
+                          label: 'Instagram',
                         },
                       ].map((social, index) => (
                         <motion.a

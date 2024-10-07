@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 interface SocialLink {
@@ -15,22 +15,16 @@ const Footer: React.FC = () => {
 
   const socialLinks: SocialLink[] = [
     {
-      href: 'https://twitter.com/its_tossi',
+      href: 'https://twitter.com/moment_mint_app',
       icon: faXTwitter,
       label: 'Twitter',
       className: 'bg-[#333]',
     },
     {
-      href: 'https://www.instagram.com/tosif._.raza',
+      href: 'https://www.instagram.com/moment_mint_app',
       icon: faInstagram,
       label: 'Instagram',
       className: 'bg-[radial-gradient(circle_at_30%_107%,#fdf497_0,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285aeb_90%)]',
-    },
-    {
-      href: 'https://www.linkedin.com/in/tosif-raza-247471205/',
-      icon: faLinkedin,
-      label: 'LinkedIn',
-      className: 'bg-[linear-gradient(138deg,_#2489be_33.45%,_#0575b3_66.59%)]',
     },
   ];
 

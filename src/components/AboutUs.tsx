@@ -1,49 +1,38 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCameraRetro, faCoins, faLock, faDiamond } from '@fortawesome/free-solid-svg-icons';
+'use client';
+import React, { useRef } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { activities } from '../data/activities';
 
-const AboutUs = () => {
-  const aboutData = {
-    'At Collage': '🎓',
-    'At Farm': '🌾',
-    'At Home': '🏠',
-    'At Temple': '🕌',
-    'At Traffic': '🚦',
-    Attending: '🎟️',
-    Baking: '🍞',
-    Celebration: '🎉',
-    Chilling: '🛋️',
-    'Class Bunk': '🏫❌',
-    Cleaning: '🧹',
-    Communting: '🚇',
-    Going: '🚶‍♂️',
-    Grooming: '💇‍♂️',
-    Hangout: '👯‍♂️',
-    'Independence Day': '🇮🇳',
-    Janmashtami: '🎊',
-    Learning: '📚',
-    Listening: '🎧',
-    Meditating: '🧘‍♂️',
-    Cooking: '🍳',
-    Cycling: '🚴‍♀️',
-    Dancing: '💃',
-    Designing: '🎨',
-    Drinking: '🍹',
-    Eating: '🍽️',
-    Engagement: '💍',
-    Enjoying: '😊',
-    Exercising: '🏋️‍♂️',
-    Gaming: '🎮',
-    'Ganesh Chaturthi': '🐘',
-    Gardening: '🌿',
-    Meeting: '👥',
-    Nothing: '😴',
-    Partying: '🥳',
-    'Playing Garba': '🪔',
-    Playing: '🎲',
-    Praying: '🙏',
-    Rafting: '🚣‍♂️',
-    Reading: '📖',
+const AboutUs: React.FC = () => {
+  const slider1 = useRef<Slider | null>(null);
+  const slider2 = useRef<Slider | null>(null);
+
+  const settings: React.ComponentProps<typeof Slider> = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1500,
+    dots: false,
+    arrows: false,
+    autoplaySpeed: 4000,
+    infinite: true,
+    beforeChange: (current: number, next: number) => {
+      if (slider2.current) {
+        slider2.current.slickGoTo(current);
+      }
+    },
+  };
+
+  const reverseSettings: React.ComponentProps<typeof Slider> = {
+    ...settings,
+    rtl: true,
+    beforeChange: (current: number, next: number) => {
+      if (slider1.current) {
+        slider1.current.slickGoTo(current);
+      }
+    },
   };
 
   return (
@@ -63,33 +52,28 @@ const AboutUs = () => {
             Share any moment, anywhere. From daily activities to special celebrations, we've got you covered:
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
-          {Object.entries(aboutData).map(([activity, emoji], index) => (
-            <div key={index} className="bg-gray-800 rounded-lg p-4 text-center">
-              <span className="text-4xl mb-2 block">{emoji}</span>
-              <span className="text-sm">{activity}</span>
+
+        <Slider {...settings} ref={slider1}>
+          {Object.keys(activities).map((activity, index) => (
+            <div key={index} className="my-10">
+              <div className="flex flex-col items-center gap-y-4">
+                <img src={activities[activity].url} alt={activity} />
+                <p>{activity}</p>
+              </div>
             </div>
           ))}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: faCameraRetro, title: 'Capture Moments', description: 'Share your experiences as they happen' },
-            { icon: faCoins, title: 'Earn Crypto', description: 'Get rewarded for your content' },
-            { icon: faLock, title: 'Blockchain Verified', description: 'Ensure authenticity of shared moments' },
-            { icon: faDiamond, title: 'Create NFTs', description: 'Turn special moments into digital assets' },
-          ].map((feature, index) => (
-            <div key={index} className="bg-gray-800 rounded-lg p-6 text-center">
-              <FontAwesomeIcon
-                icon={feature.icon}
-                className="text-2xl mb-4 text-blue-500 m-auto"
-                width={30}
-                height={30}
-              />
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p>{feature.description}</p>
+        </Slider>
+
+        <Slider {...reverseSettings} ref={slider2}>
+          {Object.keys(activities).map((activity, index) => (
+            <div key={index}>
+              <div className="flex flex-col items-center gap-y-4">
+                <img src={activities[activity].url} alt={activity} />
+                <p>{activity}</p>
+              </div>
             </div>
           ))}
-        </div>
+        </Slider>
       </div>
     </div>
   );
