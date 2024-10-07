@@ -83,8 +83,7 @@ const DownloadApp: React.FC = () => {
             variants={itemVariants}
           >
             <motion.a
-              href="./appFile/moment_mint_app.apk"
-              download="moment_mint_app.apk"
+              href="https://docs.google.com/uc?export=download&id=1W-1balN6rlSWdtrG1UANowJFWd3HKDhQ"
               className="group w-full relative sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-violet-500 to-blue-500 text-white text-lg sm:text-xl rounded-md shadow overflow-hidden"
               variants={buttonVariants}
               initial="rest"
