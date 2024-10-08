@@ -29,7 +29,7 @@ To set up this project on your local machine:
    ```
 3. Navigate to the project directory:
    ```bash
-   cd moment-mint-backend
+   cd moment-mint
    ```
 4. Install dependencies:
    ```bash
