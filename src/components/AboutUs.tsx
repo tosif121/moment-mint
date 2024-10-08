@@ -18,25 +18,17 @@ const AboutUs: React.FC = () => {
     arrows: false,
     autoplaySpeed: 4000,
     infinite: true,
-    beforeChange: (current: number, next: number) => {
-      if (slider2.current) {
-        slider2.current.slickGoTo(current);
-      }
-    },
+    pauseOnHover: false,
+    cssEase: 'linear',
   };
 
   const reverseSettings: React.ComponentProps<typeof Slider> = {
     ...settings,
     rtl: true,
-    beforeChange: (current: number, next: number) => {
-      if (slider1.current) {
-        slider1.current.slickGoTo(current);
-      }
-    },
   };
 
   return (
-    <div className="min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">About Us</h1>
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
@@ -53,27 +45,31 @@ const AboutUs: React.FC = () => {
           </p>
         </div>
 
-        <Slider {...settings} ref={slider1}>
-          {Object.keys(activities).map((activity, index) => (
-            <div key={index} className="my-10">
-              <div className="flex flex-col items-center gap-y-4">
-                <img src={activities[activity].url} alt={activity} />
-                <p>{activity}</p>
+        <div className="mb-16">
+          <Slider {...settings} ref={slider1}>
+            {Object.entries(activities).map(([activity, { url }]) => (
+              <div key={activity} className="px-2">
+                <div className="flex flex-col items-center gap-y-4">
+                  <img src={url} alt={activity} className="w-48 h-48 object-cover rounded-lg" />
+                  <p className="text-lg">{activity}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
 
-        <Slider {...reverseSettings} ref={slider2}>
-          {Object.keys(activities).map((activity, index) => (
-            <div key={index}>
-              <div className="flex flex-col items-center gap-y-4">
-                <img src={activities[activity].url} alt={activity} />
-                <p>{activity}</p>
+        <div>
+          <Slider {...reverseSettings} ref={slider2}>
+            {Object.entries(activities).map(([activity, { url }]) => (
+              <div key={activity} className="px-2">
+                <div className="flex flex-col items-center gap-y-4">
+                  <img src={url} alt={activity} className="w-48 h-48 object-cover rounded-lg" />
+                  <p className="text-lg">{activity}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );
