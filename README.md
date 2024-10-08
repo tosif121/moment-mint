@@ -66,7 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── privacy-policy/
 │   └── terms-and-conditions/
 ├── public/
-│   └── images/activities/
+│   └── images/
 ├── components/
 │   ├── HowItWorks.tsx
 │   ├── HomePage.tsx
