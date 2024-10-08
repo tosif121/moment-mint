@@ -28,7 +28,7 @@ const AboutUs: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
+    <div className="min-h-screen text-white py-12 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">About Us</h1>
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
