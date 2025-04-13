@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Manrope } from 'next/font/google';
-import Layout from '@/components/Layout';
+import dynamic from 'next/dynamic';
+const Layout = dynamic(() => import('@/components/Layout'));
 
 export const metadata: Metadata = {
   title: 'MomentMint',

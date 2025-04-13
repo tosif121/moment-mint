@@ -1,7 +1,7 @@
-'use client';
+import dynamic from 'next/dynamic';
 
-import Footer from './Footer';
-import NavBar from './NavBar';
+const NavBar = dynamic(() => import('@/components/NavBar'));
+const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

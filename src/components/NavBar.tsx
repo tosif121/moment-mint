@@ -22,25 +22,24 @@ const NavBar: React.FC = () => {
       }
     }
   }, [toggleMenu]);
-  
 
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setToggleMenu(false);
-    }
-  };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setToggleMenu(false);
+      }
+    };
 
-  if (typeof document !== 'undefined') {
-    document.addEventListener('mousedown', handleClickOutside);
-  }
-
-  return () => {
     if (typeof document !== 'undefined') {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     }
-  };
-}, []);
+
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
+    };
+  }, []);
 
   const menuVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -159,7 +158,7 @@ useEffect(() => {
           </Link>
           <motion.button
             onClick={() => setToggleMenu(!toggleMenu)}
-            className="relative z-10"
+            className="relative z-10 cursor-pointer"
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
           >
