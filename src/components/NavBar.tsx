@@ -158,11 +158,11 @@ const NavBar: React.FC = () => {
           </Link>
           <motion.button
             onClick={() => setToggleMenu(!toggleMenu)}
-            className="relative z-10 cursor-pointer"
+            className="relative z-10"
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Image src="/images/menu.png" width={32} height={32} alt="menu" />
+            <Image className="cursor-pointer" src="/images/menu.png" width={32} height={32} alt="menu" />
           </motion.button>
         </div>
 
